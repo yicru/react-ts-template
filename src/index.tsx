@@ -1,21 +1,16 @@
 import * as React from 'react'
-import { Component } from 'react'
 import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import configureStore from './store'
 import 'bulma'
 
-class App extends Component {
-  render() {
-    return (
-      <section className="hero is-fullheight">
-        <div className="hero-body">
-          <div className="container">
-            <h1 className="title">React Template</h1>
-            <h2 className="subtitle">using parcel</h2>
-          </div>
-        </div>
-      </section>
-    )
-  }
-}
+import App from './containers/App'
 
-render(<App />, document.getElementById('root'))
+const store = configureStore()
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
